@@ -2,3 +2,6 @@
 cow.py
 Array.py
 cowshuffle.py
+
+# Problem PDFs — keep on disk, never upload to the repo
+*.pdf
