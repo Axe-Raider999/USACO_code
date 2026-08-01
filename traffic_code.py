@@ -1,12 +1,3 @@
-# USACO 2019 February Bronze - Problem 3: Measuring Traffic
-#
-# Traffic flows mile 1 -> N. Each segment transforms the flow:
-#   none [a,b] : flow on the main highway here, so it must lie in [a,b]
-#   on   [a,b] : an on-ramp adds between a and b cars  -> after = before + [a,b]
-#   off  [a,b] : an off-ramp removes between a and b   -> after = before - [a,b]
-#
-# We carry a [lo, hi] range and squeeze it as we pass each segment.
-
 INF = 10**9
 
 with open("traffic.in") as read:
@@ -18,30 +9,27 @@ with open("traffic.in") as read:
 
 
 def clamp(lo, hi):
-    # traffic can never be negative
     return max(lo, 0), hi
 
 
-# --- Range BEFORE mile 1: start unknown after mile N, walk backwards ---
 lo, hi = 0, INF
 for ramp, a, b in reversed(segments):
     if ramp == "none":
-        lo, hi = max(lo, a), min(hi, b)      # flow here equals the reading
+        lo, hi = max(lo, a), min(hi, b)
     elif ramp == "on":
-        lo, hi = clamp(lo - b, hi - a)       # before = after - added
-    else:  # off
-        lo, hi = clamp(lo + a, hi + b)       # before = after + removed
+        lo, hi = clamp(lo - b, hi - a)
+    else:
+        lo, hi = clamp(lo + a, hi + b)
 before = (lo, hi)
 
-# --- Range AFTER mile N: start unknown before mile 1, walk forwards ---
 lo, hi = 0, INF
 for ramp, a, b in segments:
     if ramp == "none":
         lo, hi = max(lo, a), min(hi, b)
     elif ramp == "on":
-        lo, hi = clamp(lo + a, hi + b)       # after = before + added
-    else:  # off
-        lo, hi = clamp(lo - b, hi - a)       # after = before - removed
+        lo, hi = clamp(lo + a, hi + b)
+    else:
+        lo, hi = clamp(lo - b, hi - a)
 after = (lo, hi)
 
 with open("traffic.out", "w") as write:

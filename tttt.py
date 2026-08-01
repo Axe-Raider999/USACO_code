@@ -6,7 +6,6 @@ with open("tttt.in") as read:
 
 singles = []
 
-# rows
 if board[0] == board[1] == board[2]:
 	if board[0] not in singles:
 		singles.append(board[0])
@@ -17,7 +16,6 @@ if board[6] == board[7] == board[8]:
 	if board[6] not in singles:
 		singles.append(board[6])
 
-# columns
 if board[0] == board[3] == board[6]:
 	if board[0] not in singles:
 		singles.append(board[0])
@@ -28,7 +26,6 @@ if board[2] == board[5] == board[8]:
 	if board[2] not in singles:
 		singles.append(board[2])
 
-# diagonals
 if board[0] == board[4] == board[8]:
 	if board[0] not in singles:
 		singles.append(board[0])
@@ -40,7 +37,6 @@ if board[2] == board[4] == board[6]:
 teams_a = []
 teams_b = []
 
-# row 1
 x = ""
 y = ""
 if board[0] == board[1] and board[0] != board[2]:
@@ -63,7 +59,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# row 2
 x = ""
 y = ""
 if board[3] == board[4] and board[3] != board[5]:
@@ -86,7 +81,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# row 3
 x = ""
 y = ""
 if board[6] == board[7] and board[6] != board[8]:
@@ -109,7 +103,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# column 1
 x = ""
 y = ""
 if board[0] == board[3] and board[0] != board[6]:
@@ -132,7 +125,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# column 2
 x = ""
 y = ""
 if board[1] == board[4] and board[1] != board[7]:
@@ -155,7 +147,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# column 3
 x = ""
 y = ""
 if board[2] == board[5] and board[2] != board[8]:
@@ -178,7 +169,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# diagonal 1
 x = ""
 y = ""
 if board[0] == board[4] and board[0] != board[8]:
@@ -201,7 +191,6 @@ if x != "":
 		teams_a.append(x)
 		teams_b.append(y)
 
-# diagonal 2
 x = ""
 y = ""
 if board[2] == board[4] and board[2] != board[6]:

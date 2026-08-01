@@ -1,9 +1,7 @@
-N = 3  # The number of buckets (which is 3)
+N = 3
 TURN_NUM = 100
 
-# capacity[i] is the maximum capacity of bucket i
 capacity = [0 for _ in range(N)]
-# milk[i] is the current amount of milk in bucket i
 milk = [0 for _ in range(N)]
 with open("mixmilk.in") as read:
 	for i in range(N):
