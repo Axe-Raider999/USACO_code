@@ -1,52 +1,20 @@
 n = int(input())
 
-g = []
-l = []
-
+statements = []
 for _ in range(n):
-	line = input().split()
-	if line[0] == "G":
-		g.append(int(line[1]))
-	else:
-		l.append(int(line[1]))
+	c, p = input().split()
+	statements.append((c, int(p)))
 
-liars = 0
+best = n
 
-while True:
-	maxg = 0
-	for i in range(len(g)):
-		if g[i] > maxg:
-			maxg = g[i]
+for _, x in statements:
+	liars = 0
+	for c, p in statements:
+		if c == "G" and x < p:
+			liars += 1
+		elif c == "L" and x > p:
+			liars += 1
+	if liars < best:
+		best = liars
 
-	minl = 10 ** 9
-	for i in range(len(l)):
-		if l[i] < minl:
-			minl = l[i]
-
-	if maxg <= minl:
-		print(liars)
-		break
-
-	if len(g) == 1 or len(l) == 1:
-		liars += 1
-		print(liars)
-		break
-	else:
-		secondmaxg = 0
-		for i in range(len(g)):
-			if g[i] > secondmaxg and g[i] < maxg:
-				secondmaxg = g[i]
-
-		secondminl = 10 ** 9
-		for i in range(len(l)):
-			if l[i] < secondminl and l[i] > minl:
-				secondminl = l[i]
-
-		if maxg - secondmaxg > secondminl - minl:
-			while maxg in g:
-				g.remove(maxg)
-				liars += 1
-		else:
-			while minl in l:
-				l.remove(minl)
-				liars += 1
+print(best)
