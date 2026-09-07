@@ -2,12 +2,19 @@ n = int(input())
 a = list(map(int, input().split()))
 b = list(map(int, input().split()))
 
-moves = 0
+pos = {}
 for i in range(n):
-    if a[i] != b[i]:
-        j = a.index(b[i], i)
-        val = a.pop(j)
-        a.insert(i, val)
-        moves += 1
+    pos[b[i]] = i
 
-print(moves)
+targets = []
+for i in range(n):
+    targets.append(pos[a[i]])
+
+safe = 0
+best = -1
+for value in targets:
+    if value > best:
+        best = value
+        safe += 1
+
+print(n - safe)
