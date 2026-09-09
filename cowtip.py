@@ -8,20 +8,11 @@ while any(1 in row for row in rows):
     for i in range(n):
         if 1 in rows[i]:
             lowest = i
-    rightmost_in_row = 0
-    for j in range(n):
-        if rows[lowest][j] == 1:
-            rightmost_in_row = j
 
     rightmost = 0
     for j in range(n):
-        for i in range(n):
-            if rows[i][j] == 1:
-                rightmost = j
-    lowest_in_col = 0
-    for i in range(n):
-        if rows[i][rightmost] == 1:
-            lowest_in_col = i
+        if rows[lowest][j] == 1:
+            rightmost = j
 
     R = lowest
     C = rightmost
